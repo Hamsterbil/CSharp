@@ -1,4 +1,5 @@
-﻿#region 
+﻿Console.Title = "Basics";
+#region
 //The "#region" can be used to 'collapse' areas of code so you can focus on the key areas
 //Comments can be done in a couple different ways, after // and multiline between /* comment */
 /*
@@ -28,6 +29,8 @@ comment
 //int ExampleInt = 123;
 //float ExampleFloat = 123.21f;
 //string ExampleString = "Example 123";
+
+
 #endregion
 
 #region Variables
@@ -47,7 +50,7 @@ Console.WriteLine("Aaah, welcome " + myString + ", nice to meet you!");
 Console.WriteLine("Do you want to learn about the simplest data types?");
 /*
 * The four main basic types we we will work with in the beginning are:
-* bool, Int, Float and String   
+* bool, Int, Float and String
 * bool or boolean, can only be 'true' or 'false'
 * Int, or integer, is a whole number; 1, 2, 3
 * Float is a decimal number; 3.14 or 7.777
@@ -66,6 +69,9 @@ bool LearnAboutDataTypes = false;
 if(answer == "yes"){
     LearnAboutDataTypes = true;
 }
+else if(answer == "no") {
+    Console.WriteLine("Okay");
+}
 
 if(LearnAboutDataTypes == true){
     Console.WriteLine("Then you have come to the right place!");
@@ -74,13 +80,13 @@ if(LearnAboutDataTypes == true){
     Console.WriteLine("And allowed for these messages!");
     Console.WriteLine("...");
     Console.ReadLine();
-    
+
     Console.WriteLine("Now... The next data type we are gonna talk about is the integer, called an 'int'");
     Console.WriteLine("It is used to store whole numbers, like 1,2,3,4 and so on.");
     Console.WriteLine("Try inserting an integer now:");
     string inputFromConsole = Console.ReadLine();
     int number = int.Parse(inputFromConsole);
-    
+
     Console.WriteLine("I have now converted a text string into an integer!");
     number = number + 1;
     //number++;

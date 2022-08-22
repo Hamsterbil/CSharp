@@ -27,6 +27,8 @@
 
 # My notes
 
+
+
 ## Variables
 
 Variable betyder ting der varierer.
