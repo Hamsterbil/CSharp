@@ -125,3 +125,5 @@ int.Parse()
 Convert.ToInt32()
 (int)
 */
+
+//REMEMBER DICTIONARY
