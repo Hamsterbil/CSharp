@@ -1,20 +1,55 @@
-﻿void TypeWriter(string text, int time = 50)
+﻿#region Functions
+
+//Normal speed typewriter function for NPC's
+void NPC(string text, int time = 50)
 {
+    Console.ForegroundColor = ConsoleColor.White;  
     foreach (char c in text)
     {
         Console.Write(c);
         Thread.Sleep(time);
     }
+    Console.ForegroundColor = ConsoleColor.Red;  
 }
-void SlowerWriter(string text, int time = 500)
+
+//Slower typewriter function for DRAMATIC EFFECT
+void SlowerNPC(string text, int time = 500)
 {
+    Console.ForegroundColor = ConsoleColor.White;  
     foreach (char c in text)
     {
         Console.Write(c);
         Thread.Sleep(time);
     }
+    Console.ForegroundColor = ConsoleColor.Red;  
 }
-static void ClearCurrentConsoleLine()
+
+//Typewriter for the game "narrator"
+void Game(string text, int time = 50)
+{
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    foreach (char c in text)
+    {
+        Console.Write(c);
+        Thread.Sleep(time);
+    }
+    Console.ForegroundColor = ConsoleColor.Red;    
+}
+
+//Slower typewriter function for DRAMATIC EFFECT
+void SlowerGame(string text, int time = 500)
+{
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    foreach (char c in text)
+    {
+        Console.Write(c);
+        Thread.Sleep(time);
+    }
+    Console.ForegroundColor = ConsoleColor.Red;    
+}
+
+//Function to clear line on cursor position
+static void ClearLine()
 {
     int currentLineCursor = Console.CursorTop;
     Console.SetCursorPosition(0, Console.CursorTop);
@@ -22,147 +57,145 @@ static void ClearCurrentConsoleLine()
     Console.SetCursorPosition(0, currentLineCursor);
 }
 
+#endregion
+
 //TEST AREA:
 
 //goto test;
 
-//
+//----------
 
-#region old man
+#region Old man
+    Game("*You approach an old man sitting by a tree*\n");
+//Steps
 Console.ForegroundColor = ConsoleColor.DarkGray;
-TypeWriter("*You approach an old man sitting by a tree*\n");
-Console.WriteLine("(]");
-Thread.Sleep(500);
-Console.WriteLine("  [)");
-Thread.Sleep(500);
-Console.WriteLine("(]");
-Thread.Sleep(500);
-Console.WriteLine("  [)\n");
-Thread.Sleep(500);
+    Console.WriteLine("(]");
+    Thread.Sleep(500);
+    Console.WriteLine("  [)");
+    Thread.Sleep(500);
+    Console.WriteLine("(]");
+    Thread.Sleep(500);
+    Console.WriteLine("  [)\n");
+    Thread.Sleep(500);
 
-Console.ForegroundColor = ConsoleColor.White;
-TypeWriter("Are you lost weary traveler?\n");
-Console.ForegroundColor = ConsoleColor.Red;
-string forward = Console.ReadLine();
+    NPC("Are you lost weary traveler?\n");
 
-if (forward == "yes")
+    string forward = Console.ReadLine();
+
+if (forward == "Yes")
 {
-    Console.ForegroundColor = ConsoleColor.White;
-    TypeWriter(
-        "\nThis forest is meant for brave souls, willing to fight through monsters and bandits.\n"
-    );
-    TypeWriter("There is a dangerous road ahead. You have been warned...");
+    NPC("\nThis forest is meant for brave souls, willing to fight through monsters and bandits.\nThere is a dangerous road ahead. You have been warned...");
 
     Thread.Sleep(1500);
     Console.Clear();
 }
+
 else
 {
-    Console.ForegroundColor = ConsoleColor.White;
-    TypeWriter("Then you must already know these woods");
+    NPC("Then you must already know these woods");
+    
     Thread.Sleep(1500);
     Console.Clear();
 }
-TypeWriter("May I ask your name?\n");
-Console.ForegroundColor = ConsoleColor.Red;
+
+NPC("What is your name, weary traveler?\n");
 string name = Console.ReadLine();
-Console.ForegroundColor = ConsoleColor.White;
-TypeWriter("Greetings, " + name + ". Do you wish to continue your wander?\n");
 
-Console.ForegroundColor = ConsoleColor.Red;
+NPC("Greetings, " + name + ". Do you wish to continue your wander?\n");
 forward = Console.ReadLine();
-Console.ForegroundColor = ConsoleColor.White;
 
-if (forward == "yes")
+if (forward == "Yes")
 {
-    TypeWriter("\nIt's dangerous to go alone! Take this.\n");
+    NPC("\nIt's dangerous to go alone! Take this.\n");
     Thread.Sleep(200);
-    Console.ForegroundColor = ConsoleColor.DarkGray;
-    TypeWriter("*Recieved: SWORD*");
 
+    Game("*Recieved: SWORD*");
     Thread.Sleep(1500);
 }
+
 else
 {
-    Console.ForegroundColor = ConsoleColor.White;
-    TypeWriter("Then leave now and don't look back.");
+    NPC("Then leave now and don't look back.");
+    
     Console.ReadKey();
     return;
 }
+
 Console.ReadKey();
 Console.Clear();
+
 #endregion
 
-#region pi
-
+#region PI
+Game("*You venture onwards*\n");
 Console.ForegroundColor = ConsoleColor.DarkGray;
-TypeWriter("*You venture onwards*\n");
-Console.WriteLine("(]");
-Thread.Sleep(500);
-Console.WriteLine("  [)");
-Thread.Sleep(500);
-Console.WriteLine("(]");
-Thread.Sleep(500);
-Console.WriteLine("  [)\n");
-Thread.Sleep(500);
+//Steps
+    Console.WriteLine("(]");
+    Thread.Sleep(500);
+    Console.WriteLine("  [)");
+    Thread.Sleep(500);
+    Console.WriteLine("(]");
+    Thread.Sleep(500);
+    Console.WriteLine("  [)\n");
+    Thread.Sleep(500);
 
-TypeWriter("*A flickering light appears in the distance");
-SlowerWriter("....");
-TypeWriter("\nA man seems to be mumbling to himself by a campfire*");
-Console.ReadKey();
+Game("*A flickering light appears in the distance");
+SlowerGame("....");
+Game("\nA man seems to be mumbling to himself by a campfire*\n");
+
+Thread.Sleep(1000);
 Console.Clear();
 
-Console.ForegroundColor = ConsoleColor.White;
-//test:
-//PI = 3.1415926535897931
-TypeWriter("*mumble* *mumble* ... 3.141... or was it 3.142?\n");
+NPC("*mumble* *mumble* ... 3.141... or was it 3.142?\n");
 Thread.Sleep(1500);
 
-Console.WriteLine(" \\   /");
-Console.WriteLine("( O)( O)");
-Console.WriteLine("   ___");
+Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine(" \\   /");
+    Console.WriteLine("( O)( O)");
+    Console.WriteLine("   ___");
 Thread.Sleep(1000);
 
 Console.SetCursorPosition(0, Console.CursorTop - 2);
-ClearCurrentConsoleLine();
-Console.WriteLine("(O )(O )");
+ClearLine();
+    Console.WriteLine("(O )(O )");
 Thread.Sleep(1000);
 
 Console.SetCursorPosition(0, Console.CursorTop - 1);
-ClearCurrentConsoleLine();
+ClearLine();
 Console.SetCursorPosition(0, Console.CursorTop - 1);
-ClearCurrentConsoleLine();
-Console.WriteLine("");
-Console.WriteLine("( O )( O )");
+ClearLine();
+    Console.WriteLine("");
+    Console.WriteLine("( O )( O )");
 Console.SetCursorPosition(0, Console.CursorTop - 3);
-ClearCurrentConsoleLine();
+ClearLine();
 Console.SetCursorPosition(0, Console.CursorTop + 5);
 Thread.Sleep(1000);
 
-TypeWriter("Hello...");
+NPC("Hello...");
 Thread.Sleep(300);
-TypeWriter("\nI seem to have forgotten the decimals of PI, and I");
+NPC("\nI seem to have forgotten the decimals of PI, and I");
 
+Console.ForegroundColor = ConsoleColor.White;
 Console.SetCursorPosition(0, Console.CursorTop - 5);
-Console.WriteLine(" \\   /");
+    Console.WriteLine(" \\   /");
 Console.SetCursorPosition(0, Console.CursorTop + 5);
 Thread.Sleep(1000);
 
-SlowerWriter("NEED");
-TypeWriter("\nthe 10 first decimals to finish my calculation");
-TypeWriter("\n\nDon't ask me why. Do you know the 10 first digits?\n\n");
-Thread.Sleep(1000);
+SlowerNPC("NEED");
+NPC("\nthe 10 first decimals to finish my calculation");
+NPC("\n\nDon't ask me why. Do you know the 5 first digits?\n\n");
+Thread.Sleep(500);
 
+//Actions menu for player
 Console.ForegroundColor = ConsoleColor.Blue;
-Console.WriteLine("Enter a number from actions down below:");
-Console.WriteLine("[ 1. 'Yes' ] [ 2. 'No' ] [ 3. Slash him ] [ 4. 'Why?' ]\n");
+    Console.WriteLine("Enter a number from actions down below:");
+    Console.WriteLine("[ 1. 'Yes' ] [ 2. 'No' ] [ 3. Slash him ] [ 4. 'Why?' ]\n");
 
 int actions = Convert.ToInt32(Console.ReadLine());
 Thread.Sleep(100);
 Console.Clear();
 
 Console.ForegroundColor = ConsoleColor.White;
-
 switch (actions)
 {
     case 1:
@@ -171,10 +204,9 @@ switch (actions)
         Console.WriteLine("   ___");
         Thread.Sleep(1000);
 
-        TypeWriter("\nOh!");
+        NPC("\nOh!");
         Thread.Sleep(1000);
-        TypeWriter("\nPlease do tell.");
-
+        NPC("\nPlease do tell.");
         break;
 
     case 2:
@@ -183,10 +215,9 @@ switch (actions)
         Console.WriteLine("   ___");
         Thread.Sleep(1000);
 
-        TypeWriter("\nThen why are you here...");
+        NPC("\nThen why are you here...");
         Thread.Sleep(1000);
-        TypeWriter("\nI still want to see you try");
-
+        NPC("\nI still want to see you try");
         break;
 
     case 3:
@@ -194,13 +225,12 @@ switch (actions)
         Console.WriteLine(".-.");
         Thread.Sleep(1000);
 
-        TypeWriter("\nDude...");
+        NPC("\nDude...");
         Thread.Sleep(1000);
-        TypeWriter("\nDo you think this is some kind of RPG??");
+        NPC("\nDo you think this is some kind of RPG??");
         Thread.Sleep(1000);
 
-        TypeWriter("\nGet your act together and tell me the 10 first decimals of pi.");
-
+        NPC("\nGet your act together and tell me the 5 first decimals of pi.");
         break;
 
     case 4:
@@ -209,28 +239,32 @@ switch (actions)
         Console.WriteLine("   ___");
         Thread.Sleep(1000);
 
-        TypeWriter("\nI SAID DON'T ASK");
-        SlowerWriter("...");
-        TypeWriter(" But thank you for showing interest");
+        NPC("\nI SAID DON'T ASK");
+        SlowerNPC("...");
+        NPC(" But thank you for showing interest");
         Thread.Sleep(1000);
 
-        TypeWriter("\nNow tell me the 10 first decimals of pi.");
-
+        NPC("\nNow tell me the 5 first decimals of pi.");
         break;
 }
-Console.ReadKey();
+Thread.Sleep(1000);
 Console.Clear();
 
+Console.ForegroundColor = ConsoleColor.White;
+Console.WriteLine("");
 Console.WriteLine("( O)( O)");
 Console.WriteLine("   ___");
 Thread.Sleep(1000);
 
+//PI = 3.14159
+double pie = Math.PI;
+
 Console.ForegroundColor = ConsoleColor.Red;
-
-TypeWriter("\nIt is: ");
-double pi = double.Parse(Console.ReadLine());
-
+Console.WriteLine("\nPi, with the first 5 decimals is: ");
+double piAnswer = double.Parse(Console.ReadLine());
 
 #endregion
+
+//Next encounter: Guessing game. Guess a number between 0-10 and npc counts until random number which breaks loop. If player guesses correct, pass, otherwise loop
 
 Console.ReadKey();
