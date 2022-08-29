@@ -14,7 +14,7 @@ Console.ForegroundColor = ConsoleColor.DarkGray;
 }
 
 //Normal speed typewriter function for NPC's
-void NPC(string text, int time = 45)
+static void NPC(string text, int time = 50)
 {
     Console.ForegroundColor = ConsoleColor.White;  
     foreach (char c in text)
@@ -49,46 +49,27 @@ void Game(string text, int time = 50)
     Console.ForegroundColor = ConsoleColor.Red;    
 }
 
-//Slower typewriter function for DRAMATIC EFFECT
-void SlowerGame(string text, int time = 500)
-{
-    Console.ForegroundColor = ConsoleColor.DarkGray;
-    foreach (char c in text)
-    {
-        Console.Write(c);
-        Thread.Sleep(time);
-    }
-    Console.ForegroundColor = ConsoleColor.Red;    
-}
-
 //Function to clear line on cursor position
 static void ClearLine()
 {
-    int currentLineCursor = Console.CursorTop;
+    int currentLine = Console.CursorTop;
     Console.SetCursorPosition(0, Console.CursorTop);
     Console.Write(new string(' ', Console.WindowWidth));
-    Console.SetCursorPosition(0, currentLineCursor);
+    Console.SetCursorPosition(0, currentLine);
 }
-
 #endregion
-
-//TEST AREA:
-
-//goto test;
-
-//----------
 
 #region "Checkpoints"
 
+//Actions menu to choose one of the 3 sections.
 Console.ForegroundColor = ConsoleColor.Blue;
-Console.WriteLine("Write number corresponding with section to begin in\n");
-Console.WriteLine("1: The old man");
-Console.WriteLine("2: Problems with PI");
-Console.WriteLine("3: A game of chance\n");
+    Console.WriteLine("Write number corresponding with section to begin in\n");
+    Console.WriteLine("1: The old man");
+    Console.WriteLine("2: Problems with PI");
+    Console.WriteLine("3: A game of chance\n");
 
-Console.ForegroundColor = ConsoleColor.Red;
+//Uses goto statements to jump to correct lines.
 int startMenu = int.Parse(Console.ReadLine());
-
 if (startMenu == 1) {        
 }
 
@@ -109,11 +90,10 @@ else {
 Thread.Sleep(1000);
 Console.Clear();
 
-Game("*You approach an old man sitting by a tree*\n");
-Step();
+    Game("*You approach an old man sitting by a tree*\n");
+    Step();
 
-//"Yes", "no" loop blueprint
-/*
+/*"Yes", "no" loop blueprint
 while(true) {
     if (forward == "Yes" || forward "yes") {
 
@@ -130,7 +110,7 @@ while(true) {
     }
 
     else {
-        NPC("I'm sorry, I don't seem to understand");
+        NPC("\nI'm sorry, I don't seem to understand");
 
         Thread.Sleep(1000);
         Console.Clear();
@@ -162,7 +142,7 @@ else if (forward == "No" || forward == "no") {
 }
 
 else {
-    NPC("I'm sorry, I don't seem to understand");
+    NPC("\nI'm sorry, I don't seem to understand");
 
     Thread.Sleep(1000);
     Console.Clear();
@@ -177,56 +157,53 @@ while(true) {
     NPC("\nGreetings, " + name + ". Do you wish to continue your wander?\n");
     forward = Console.ReadLine();
 
-if (forward == "Yes" || forward == "yes") {
-    NPC("\nIt's dangerous to go alone! Take this.\n");
-    Thread.Sleep(200);
+    if (forward == "Yes" || forward == "yes") {
+        NPC("\nIt's dangerous to go alone! Take this.\n");
+        Thread.Sleep(200);
 
-    Game("*Recieved: SWORD*");
-    Thread.Sleep(1000);
-    break;
-}
+        Game("*Recieved: SWORD*");
+        Thread.Sleep(1000);
+        break;
+    }
 
-else if (forward == "No" || forward == "no") {
-    NPC("Then leave now and don't look back.");
-    
-    Console.ReadKey();
-    return;
-}
+    else if (forward == "No" || forward == "no") {
+        NPC("Then leave now and don't look back.");
+        
+        Console.ReadKey();
+        return;
+    }
 
-else {
-    NPC("I'm sorry, I don't seem to understand");
+    else {
+        NPC("\nI'm sorry, I don't seem to understand");
 
-    Thread.Sleep(1000);
-    Console.Clear();
+        Thread.Sleep(1000);
+        Console.Clear();
 
-    continue;
-}
+        continue;
+    }
 }
 
 Console.ReadKey();
-Console.Clear();
 #endregion
 
 #region PI
+
+//I think only interesting thing here is the use of Console.SetCursorPosition(); to make faces.
 #region Just Dialogue 
 two:
 Thread.Sleep(1000);
 Console.Clear();
+    Game("*You venture onwards*\n");
+    Step();
 
-Game("*You venture onwards*\n");
-Console.ForegroundColor = ConsoleColor.DarkGray;
-Step();
-
-Game("*A flickering light appears in the distance");
-SlowerGame("....");
-Game("\nA man seems to be mumbling to himself by a campfire*\n");
-
+    Game("*A flickering light appears in the distance...");
+    Game("\nA man seems to be mumbling to himself by a campfire*\n");
 Thread.Sleep(1000);
 Console.Clear();
-
-NPC("*mumble* *mumble* ... 3.141... or was it 3.142?\n");
+    NPC("*mumble* *mumble* ... 3.141... or was it 3.142?\n");    
 Thread.Sleep(1500);
 
+//Gives the NPC "life"
 Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine(" \\   /");
     Console.WriteLine("( O)( O)");
@@ -249,9 +226,9 @@ ClearLine();
 Console.SetCursorPosition(0, Console.CursorTop + 5);
 Thread.Sleep(1000);
 
-NPC("Hello...");
+    NPC("Hello...");
 Thread.Sleep(300);
-NPC("\nI seem to have forgotten the decimals of PI, and I");
+    NPC("\nI seem to have forgotten the decimals of PI, and I");
 
 Console.ForegroundColor = ConsoleColor.White;
 Console.SetCursorPosition(0, Console.CursorTop - 5);
@@ -259,13 +236,14 @@ Console.SetCursorPosition(0, Console.CursorTop - 5);
 Console.SetCursorPosition(0, Console.CursorTop + 5);
 Thread.Sleep(1000);
 
-SlowerNPC("NEED");
-NPC("\nthe 5 first decimals to finish my calculation");
-NPC("\n\nDon't ask me why. Do you know the 5 first decimals?\n\n");
+    SlowerNPC("NEED");
+    NPC("\nthe 5 first decimals to finish my calculation");
+    NPC("\n\nDon't ask me why. Do you know the 5 first decimals?\n\n");
 Thread.Sleep(500);
 #endregion
 
 //Actions menu for player
+//MAYBE SWITCH ANSWER TO ARRAY WITH MULTIPLE CHOICE INSTEAD?-------------------------------------------------------------------------------
 Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("Enter a number from actions down below:");
     Console.WriteLine("[ 1. 'Yes' ] [ 2. 'No' ] [ 3. Slash him ] [ 4. 'Why?' ]\n");
@@ -276,6 +254,8 @@ Thread.Sleep(100);
 Console.Clear();
 
 Console.ForegroundColor = ConsoleColor.White;
+
+//Switch to check which action player took.
 switch (actions) {
     case 1:
         Console.SetCursorPosition(0, Console.CursorTop + 2);
@@ -330,14 +310,13 @@ switch (actions) {
 Thread.Sleep(1000);
 Console.Clear();
 
+//Loop until player writes correct answer. PI = 3.14159
 while (true) {
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine("");
 Console.WriteLine("( O)( O)");
 Console.WriteLine("   ___");
 Thread.Sleep(1000);
-
-//PI = 3.14159
 
 Console.ForegroundColor = ConsoleColor.Red;
 Console.WriteLine("\nPi, with the first 5 decimals is: ");
@@ -349,7 +328,7 @@ if (piAnswer == 3.14159) {
     Console.SetCursorPosition(0, Console.CursorTop - 6);
     ClearLine();
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("  ^   ^");
+        Console.WriteLine("  ^   ^");
     Console.SetCursorPosition(0, Console.CursorTop + 6);
 
     NPC("Thank you stranger.");
@@ -366,8 +345,16 @@ else {
 }
 }
 
-Console.ReadKey();
+Thread.Sleep(1000);
 Console.Clear();
+
+Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("");
+    Console.WriteLine("( O)( O)");
+    Console.WriteLine("   ___");
+    NPC("\nNow get out of my sight.");
+
+Console.ReadKey();
 #endregion
 
 #region Game
@@ -375,7 +362,147 @@ three:
 Thread.Sleep(1000);
 Console.Clear();
 
-//Next encounter: Guessing game. Guess a number between 0-10 and npc counts until random number which breaks loop. If player guesses correct, pass, otherwise loop
+    Game("*Confused, you begin to leave... The campfire fades in the distance between the trees*\n");
+    Step();
+    Game("*A one-eyed snake suddenly comes from behind a tree*\n");
+
+    NPC("\nHey kiddo. If you want to continue, you'll have to play a game of chance with me.");
+Thread.Sleep(600);
+    NPC("\nThe rules are simple. Write a number between 1 and 5 on this piece of paper without showing me.\n");
+Thread.Sleep(600);
+    Game("\n*Recieved: PAPER*\n");
+Thread.Sleep(600);
+    NPC("\nAfterwards, I begin to count to 5, but I can stop whenever I want.\nIf you guess my number you win and can continue.\nOkay?");
+Thread.Sleep(600);
+    SlowerNPC(" Okay.");
+
+Thread.Sleep(600);
+Console.Clear();
+
+/*
+Loop guesses until correct. All inside while(guessing) loop.
+Starts by checking if player has tried to guess 5 times already. If not, it makes player write on the "paper".
+Afterwards it starts counting with for loop and checks if players guess is correct, wrong or if they wrote less/more than 1 or 5.
+If they guess correctly, NPC tells how many attempts it took. 
+*/
+int tries = 0;
+int totalTries = 1;
+bool guessing = true;
+while(guessing) {
+    int i;
+    Random rnd = new Random();
+
+    if(tries == 5) {
+        NPC("It seems you are struggling...\n");
+
+        //Actions menu
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\nEnter a number from actions down below:");
+        Console.WriteLine("[ 1. Keep going ] [ 2. Slash the snake ] [ 3. Cry ]\n");
+
+        actions = Convert.ToInt32(Console.ReadLine());
+        switch(actions) {
+            case 1:
+                NPC("\nAlright.");
+
+                tries = 0;
+                Thread.Sleep(1000);
+                Console.Clear();
+                break;
+
+            case 2:
+                NPC("\nHey hey hey hey!\nWhat are you doing?\n");
+                Thread.Sleep(2000);
+
+                Game("\n*You are now a murderer*");
+                
+                guessing = false;
+                Thread.Sleep(2000);
+                Console.Clear();
+                continue;
+
+            case 3:
+                NPC("\nIm not sure how that's helping...");
+
+                Thread.Sleep(1000);
+                Console.Clear();
+                break;
+        }
+    }
+
+    Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Write a number between 1 - 5 on your paper\n");
+    Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("-----------------");
+        Console.WriteLine("|               |");
+        Console.WriteLine("|               |");
+        Console.WriteLine("|               |");
+        Console.WriteLine("-----------------");
+    Console.SetCursorPosition(8, 4);
+    
+    int guess = int.Parse(Console.ReadLine());
+    Console.SetCursorPosition(0, 8);
+
+        NPC("Okay, I'll start counting now.\n\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    Thread.Sleep(300);
+
+    for(i = 1; i <= rnd.Next(1,6); i++) {
+        Console.WriteLine(i);
+        Thread.Sleep(1000);
+    }
+    Console.WriteLine("");
+
+        NPC("Let's see");
+        SlowerNPC("...\n");
+    
+    if(i - 1 == guess) {
+        if(totalTries == 1) {
+            NPC("Whoah you actually guessed it. Only took "+ totalTries +" try.\n");
+        }
+
+        else {
+            NPC("Whoah you actually guessed it. Only took "+ totalTries +" tries.\n");
+        }
+
+        Thread.Sleep(2000);
+        Console.Clear();
+
+        break;
+    }
+    
+    else if(guess > 5) {
+        NPC("That's not between 1 and 5. Too high.");
+        Thread.Sleep(700);
+        Console.Clear();
+
+        continue;
+    }
+
+    else if(guess <= 0) {
+        NPC("That's too low...");
+        Thread.Sleep(700);
+        Console.Clear();
+
+        continue;
+    }
+
+//Increments tries until it reaches 5, then asks if player wants to continue.
+//Increments totalTries until player guesses correctly, then returns value to player.
+    else {
+        NPC("Wrong.");
+        tries++;
+        totalTries++;
+        Thread.Sleep(700);
+        Console.Clear();
+
+        continue;
+    }
+}
+    Game("*You leave the one-eyed snake.*");
 #endregion
+
+    Step();
+    Game("\nAfter a while, you reach the end of the forest. The sun is shining*");
 
 Console.ReadKey();
