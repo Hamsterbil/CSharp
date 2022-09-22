@@ -11,15 +11,15 @@ int RecursiveFibonacci(int first, int second, int count)
 //"first" turns into second to reach next number for next loop
 //"second" obtains value of "next". Upcoming loop has greater values to create next sequence number
     int next = first + second; 
-        first = second;
-        second = next;
+    first = second;
+    second = next;
     
 //If count hits 0, output "next", which will be the last calculated number. 
     if(count == 0) {
         return next;
     }
 
-//If count isn't 0, loop
+//If count isn't 0, loop back.
     else {
         return RecursiveFibonacci(first, second, count);
     }

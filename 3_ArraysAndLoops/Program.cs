@@ -16,18 +16,18 @@ Console.WriteLine("Length of string array is = " + stringArr.Length);
 stringArr[0] = "I'm the first string in the array";
 stringArr[1] = "I'm the second string in the array";
 stringArr[1] = "The first string have now been changed to this!";
-//Console.WriteLine(stringArr[1]);
-//Array.Resize(ref stringArr, 10);
+Console.WriteLine(stringArr[1]);
+Array.Resize(ref stringArr, 100);
 
 
 int[] intArr = new int[5];
 intArr[0] = 0;
 intArr[1] = 1;
 intArr[2] = 321;
-//Console.WriteLine(intArr[2]);
+Console.WriteLine(intArr[2]);
 
 bool[] boolArr = new bool[intArr.Length + stringArr.Length];
-//Console.WriteLine("Length of Bool array : " + boolArr.Length);
+Console.WriteLine("Length of Bool array : " + boolArr.Length);
 
 #endregion
 
@@ -43,7 +43,7 @@ stringList.Remove("This is the first string");
 int index = stringList.IndexOf("Second string");
 stringList[index] = "I changed the second string";
 
-//Console.WriteLine(stringList[0]);
+Console.WriteLine(stringList[0]);
 
 #endregion
 

@@ -93,9 +93,35 @@ Addresser i hukommelsen benytter ofte hexidecimal (16-tals system)
 # Git
 
 # References
+/* "Yes", "no" loop blueprint to copy.
+while(true) {
+    if (forward == "Yes" || forward "yes") {
+
+        Thread.Sleep(1000);
+        Console.Clear();
+        break;
+    }
+
+    else if (forward == "No" || forward == "no") {
+
+        Thread.Sleep(1000);
+        Console.Clear();
+        break; or continue; or return;
+    }
+
+    else {
+        NPC("\nI'm sorry, I don't seem to understand");
+
+        Thread.Sleep(1000);
+        Console.Clear();
+        continue;
+    }
+} 
+*/
 
 https://www.w3schools.com/cs/index.php
 
 https://www.youtube.com/c/Brackeys/playlists (C# playliste 8 afsnit af ca. 15 minutter)
 
 https://dotnet.microsoft.com/en-us/learn/csharp
+
