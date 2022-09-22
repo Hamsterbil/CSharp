@@ -1,6 +1,6 @@
 ﻿#region Functions
 
-//Steps, but I choose to call function because player walks 3 times
+//Steps, but I choose to call function because player walks more than once
 void Step() {
 Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("(]");
@@ -61,7 +61,7 @@ void ClearLine()
 
 #region "Checkpoints"
 
-//Actions menu to choose one of the 3 sections.
+//Actions menu to choose one of the 3 sections in the story.
 Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("Write number corresponding with section to begin in\n");
     Console.WriteLine("1: The old man");
@@ -74,11 +74,11 @@ if (startMenu == 1) {
 }
 
 else if (startMenu == 2) {
-    goto two;    
+    goto two;    //LINE 191
 }
 
 else if (startMenu == 3) {
-    goto three;    
+    goto three;  //LINE 298
 }
 
 else {       
@@ -92,9 +92,13 @@ Console.Clear();
     Game("*You approach an old man sitting by a tree*\n");
     Step();
 
-/* "Yes", "no" loop blueprint to copy.
+string forward;
 while(true) {
-    if (forward == "Yes" || forward "yes") {
+    NPC("Are you lost weary traveler?\n");
+
+    forward = Console.ReadLine();
+    if (forward == "Yes" || forward == "yes") {
+        NPC("\nThis forest is meant for brave souls, willing to fight through monsters and bandits.\nThere is a dangerous road ahead. You have been warned...");
 
         Thread.Sleep(1000);
         Console.Clear();
@@ -102,10 +106,11 @@ while(true) {
     }
 
     else if (forward == "No" || forward == "no") {
-
+        NPC("Then you must already know these woods");
+        
         Thread.Sleep(1000);
         Console.Clear();
-        break; or continue; or return;
+        break;
     }
 
     else {
@@ -115,39 +120,8 @@ while(true) {
         Console.Clear();
         continue;
     }
-} 
-*/
-
-string forward;
-while(true) {
-    NPC("Are you lost weary traveler?\n");
-
-    forward = Console.ReadLine();
-
-if (forward == "Yes" || forward == "yes") {
-    NPC("\nThis forest is meant for brave souls, willing to fight through monsters and bandits.\nThere is a dangerous road ahead. You have been warned...");
-
-    Thread.Sleep(1000);
-    Console.Clear();
-    break;
 }
 
-else if (forward == "No" || forward == "no") {
-    NPC("Then you must already know these woods");
-    
-    Thread.Sleep(1000);
-    Console.Clear();
-    break;
-}
-
-else {
-    NPC("\nI'm sorry, I don't seem to understand");
-
-    Thread.Sleep(1000);
-    Console.Clear();
-    continue;
-}
-}
 string name;
 while(true) {
     NPC("What is your name, weary traveler?\n");
@@ -185,7 +159,7 @@ while(true) {
 Console.ReadKey();
 #endregion
 
-#region PI
+#region Array
 //I think only interesting thing during region "Just Dialogue" is the use of Console.SetCursorPosition(); to make faces.
 #region Just Dialogue 
 two:
@@ -312,10 +286,8 @@ Thread.Sleep(600);
     Game("\n*Recieved: PAPER*\n");
 Thread.Sleep(600);
     NPC("\nAfterwards, I begin to count to 5, but I can stop whenever I want.\nIf you guess my number you win and can continue.\nOkay?");
-Thread.Sleep(600);
-    SlowerNPC(" Okay.");
 
-Thread.Sleep(600);
+Console.ReadKey();
 Console.Clear();
 
 /*
@@ -412,7 +384,7 @@ while(guessing) {
         break;
     }
     
-    else if(guess > 5) {
+    else if(guess == 5) {
         NPC("That's not between 1 and 5. Too high.");
         Thread.Sleep(700);
         Console.Clear();
@@ -444,6 +416,6 @@ while(guessing) {
 #endregion
 
     Step();
-    Game("\nAfter a while, you reach the end of the forest. The sun is shining*");
+    Game("After a while, you reach the end of the forest. The sun is shining*");
 
 Console.ReadKey();
