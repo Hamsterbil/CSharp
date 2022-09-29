@@ -74,11 +74,11 @@ if (startMenu == 1) {
 }
 
 else if (startMenu == 2) {
-    goto two;    //LINE 191
+    goto two;    //LINE 166
 }
 
 else if (startMenu == 3) {
-    goto three;  //LINE 298
+    goto three;  //LINE 275
 }
 
 else {       
@@ -92,6 +92,7 @@ Console.Clear();
     Game("*You approach an old man sitting by a tree*\n");
     Step();
 
+//Small loop as exception handle for "yes" and "no".
 string forward;
 while(true) {
     NPC("Are you lost weary traveler?\n");
@@ -122,7 +123,8 @@ while(true) {
     }
 }
 
-string name;
+//Another exception handle
+string name; 
 while(true) {
     NPC("What is your name, weary traveler?\n");
     name = Console.ReadLine();
@@ -151,7 +153,6 @@ while(true) {
 
         Thread.Sleep(1000);
         Console.Clear();
-
         continue;
     }
 }
@@ -230,7 +231,7 @@ Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\nWrite and rank the 5 best sentences.");
 Console.ForegroundColor = ConsoleColor.Red;
 
-//Loop the length of the array. Number the sentences first, then make player write
+//Loop the length of the array. Number the sentences first (1. 2. 3...), then make player write
 for(int i = 0; i < sentences.Length; i++) {
     Console.WriteLine(i + 1 + ". ");
     Console.SetCursorPosition(3, Console.CursorTop - 1);
@@ -253,6 +254,7 @@ for(int i = 0; i < sentences.Length; i++) {
     NPC("\nThese are the best sentences ever spoken in my opinion:\n");
 Console.ForegroundColor = ConsoleColor.White;
 
+//Create a list with the NPC's sentences
 List<string> stringList = new List<string>();
 stringList.Add("To be is to do.\n");
 stringList.Add("To do is to be.\n");
@@ -260,9 +262,10 @@ stringList.Add("Do be do be do.\n");
 stringList.Add("If she leaves you for another... There is always her mother.\n");
 stringList.Add("If she isn't blood related, then she is to be dated.\n");
 
+//Another loop to number the lists 
 for (int i = 0; i < sentences.Length; i++) {
-NPC(i + 1 + ". " + stringList[i]);
-Thread.Sleep(300);
+    NPC(i + 1 + ". " + stringList[i]);
+    Thread.Sleep(300);
 }
 
 Console.ReadKey();
@@ -277,7 +280,7 @@ Console.Clear();
     Step();
     Game("*A spaniard suddenly comes from behind a tree*\n");
 
-    NPC("\nHello, my name is Inigo Montoya. I do not mean to pry, but you don't by any chance happen to have six fingers on your right hand?");
+    NPC("\nHello, my name is Inigo Montoya. I do not mean to pry,\nbut you don't by any chance happen to have six fingers on your right hand?");
 Thread.Sleep(1000);
     NPC("\nI see you do not. Do you then care to play a game of chance with me?");
 Thread.Sleep(600);
@@ -306,7 +309,7 @@ while(guessing) {
     if(tries == 5) {
         NPC("It seems you are struggling...\n");
 
-        //Actions menu
+//Actions menu 
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nEnter a number from actions down below:");
         Console.WriteLine("[ 1. Keep going ] [ 2. Slash Inigo Montoya ] [ 3. Cry ]\n");
@@ -342,6 +345,7 @@ while(guessing) {
         }
     }
 
+//Create a paper in the console, and place cursor position in the middle of the paper
     Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("Write a number between 1 - 5 on your paper\n");
     Console.ForegroundColor = ConsoleColor.White;
@@ -359,7 +363,7 @@ while(guessing) {
     Console.ForegroundColor = ConsoleColor.White;
     Thread.Sleep(300);
 
-//Loop and write a number, but loops randomly between 1 and 5 times. For the counting process
+//Loop and write a number, but loops randomly between 1 and 5 times for the counting process
     for(i = 1; i <= rnd.Next(1,6); i++) {
         Console.WriteLine(i);
         Thread.Sleep(1000);
@@ -380,7 +384,6 @@ while(guessing) {
 
         Thread.Sleep(2000);
         Console.Clear();
-
         break;
     }
     
@@ -388,7 +391,6 @@ while(guessing) {
         NPC("That's not between 1 and 5. Too high.");
         Thread.Sleep(700);
         Console.Clear();
-
         continue;
     }
 
@@ -396,7 +398,6 @@ while(guessing) {
         NPC("That's too low...");
         Thread.Sleep(700);
         Console.Clear();
-
         continue;
     }
 
@@ -408,7 +409,6 @@ while(guessing) {
         totalTries++;
         Thread.Sleep(700);
         Console.Clear();
-
         continue;
     }
 }
@@ -417,5 +417,4 @@ while(guessing) {
 
     Step();
     Game("After a while, you reach the end of the forest. The sun is shining*");
-
 Console.ReadKey();
