@@ -4,7 +4,7 @@
 //Minimum requirements:
 //The CarDealer must have a list of available cars for sale
 //The CarDealer must have public Buy/Sell methods
-//These methods must be accessiable via console input/output
+//These methods must be accessible via console input/output
 //These methods must change the car dealers available cars
 //Make use of atleast 5 classes.
 //These classes must have atleast 1 Field variable each
@@ -17,7 +17,7 @@
 
 
 // Suggestion to get started on user interaction in the console
-/*
+
 
 CarDealer dealer = new CarDealer(); //This class you need to create yourself!
 while(true){
@@ -38,5 +38,5 @@ while(true){
             return;
     }
 }
-*/
+
 #endregion
